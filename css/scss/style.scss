@@ -1,4 +1,7 @@
 @import "color";
+$breakSmall: 400px;
+$breakMedium: 800px;
+$breakLarge: 1300px;
 body {
     display: grid;
     background: $color-secondary-2-4;
@@ -22,37 +25,49 @@ nav {
 
 header.wrapper {
   background:  $color-secondary-2-2;
-  display: grid;
-  grid-template-columns: 200px auto;
+  //media :
+  // display: grid;
+  // grid-template-columns: 200px auto;
   aside {
     background: $color-secondary-2-3;
   }
+
   section.content {
-    background: $color-secondary-2-4;
-    display: grid;
-    div.over-nav {
-      min-height: 10px;
-      width: 100%;
-      background: $color-secondary-1-2;
-    }
-    div.nav {
+      background: $color-secondary-2-4;
+      color: rgb(39, 149, 224);
       display: grid;
-      grid-template-columns: auto 20px;
-      ul {
-        padding-left: 0;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        li {
-          list-style: none;
-          grid-template-columns: 200px auto;
-        }
+      grid-template-rows: 20px 30px 1fr;
+      div.over-nav {
+          // min-height: 10px;
+          width: 100%;
+          background: $color-secondary-1-2;
       }
-    }
+      div.nav {
+          display: grid;
+          grid-template-columns: auto 20px;
+          ul {
+              padding-left: 0;
+
+              display: flex;
+              justify-content: space-around;
+              li {
+                  list-style: none;
+                  grid-template-columns: 200px auto;
+              }
+          }
+          a {
+              color: white;
+          }
+      }
   }
 }
-
-
+.sectionArticle {
+    display: grid;
+    grid-gap: 0.2rem;
+    article {
+        border-radius: 15px;
+    }
+}
 
 
 section{
@@ -60,9 +75,18 @@ section{
 }
 
 article {
-    background: $color-complement-0;
+    background: $color-primary-4;
+    color: white;
 }
 section.wrapper {
   display: grid;
+
+}
+@media screen and (min-width: $breakMedium){
+    header.wrapper {
+      display: grid;
+      grid-template-columns: 200px auto;
+  }
+
 
 }

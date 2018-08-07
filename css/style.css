@@ -1,2 +1,81 @@
-body{display:grid;background:#09151B;grid-template-columns:50px auto;grid-template-rows:50px  300px auto}aside.main-aside{background:#51AAD0;grid-row:1/ span 3}nav{background:#4ED993}nav ul>li{display:inline}header.wrapper{background:#377893;display:grid;grid-template-columns:200px auto}header.wrapper aside{background:#173643}header.wrapper section.content{background:#09151B;display:grid}header.wrapper section.content div.over-nav{min-height:10px;width:100%;background:#EAA251}header.wrapper section.content div.nav{display:grid;grid-template-columns:auto 20px}header.wrapper section.content div.nav ul{padding-left:0;color:white;display:flex;justify-content:space-between}header.wrapper section.content div.nav ul li{list-style:none;grid-template-columns:200px auto}section{background:#AA5439}article{background:#28774F}section.wrapper{display:grid}
+body {
+  display: grid;
+  background: #09151B;
+  grid-template-columns: 50px auto;
+  grid-template-rows: 50px  300px auto;
+}
+
+aside.main-aside {
+  background: #51AAD0;
+  grid-row: 1/ span 3;
+}
+
+nav {
+  background: #4ED993;
+}
+nav ul > li {
+  display: inline;
+}
+
+header.wrapper {
+  background: #377893;
+}
+header.wrapper aside {
+  background: #173643;
+}
+header.wrapper section.content {
+  background: #09151B;
+  color: #2795e0;
+  display: grid;
+  grid-template-rows: 20px 30px 1fr;
+}
+header.wrapper section.content div.over-nav {
+  width: 100%;
+  background: #EAA251;
+}
+header.wrapper section.content div.nav {
+  display: grid;
+  grid-template-columns: auto 20px;
+}
+header.wrapper section.content div.nav ul {
+  padding-left: 0;
+  display: flex;
+  justify-content: space-around;
+}
+header.wrapper section.content div.nav ul li {
+  list-style: none;
+  grid-template-columns: 200px auto;
+}
+header.wrapper section.content div.nav a {
+  color: white;
+}
+
+.sectionArticle {
+  display: grid;
+  grid-gap: 0.2rem;
+}
+.sectionArticle article {
+  border-radius: 15px;
+}
+
+section {
+  background: #AA5439;
+}
+
+article {
+  background: #2A140D;
+  color: white;
+}
+
+section.wrapper {
+  display: grid;
+}
+
+@media screen and (min-width: 800px) {
+  header.wrapper {
+    display: grid;
+    grid-template-columns: 200px auto;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
