@@ -1,0 +1,28 @@
+body {
+  display: grid;
+  background: #09151B;
+  grid-template-columns: 20px auto;
+  grid-template-rows: 50px auto;
+}
+
+header {
+  background: #4ED993;
+}
+header ul > li {
+  display: inline;
+}
+
+aside {
+  background: #51AAD0;
+  grid-row: 1/ span 2;
+}
+
+section {
+  background: #AA5439;
+}
+
+article {
+  background: #28774F;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,27 @@
+@import "color";
+body {
+    display: grid;
+    background: $color-secondary-2-4;
+    grid-template-columns: 20px auto;
+    grid-template-rows: 50px auto;
+
+}
+header {
+    background: $color-complement-1;
+    ul>li{
+        display: inline;
+    }
+}
+aside {
+    background: $color-secondary-2-1;
+    grid-row: 1/ span 2;
+}
+
+section{
+
+    background: $color-primary-0;
+}
+
+article {
+    background: $color-complement-0;
+}
