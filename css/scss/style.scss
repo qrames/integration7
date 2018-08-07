@@ -2,26 +2,67 @@
 body {
     display: grid;
     background: $color-secondary-2-4;
-    grid-template-columns: 20px auto;
-    grid-template-rows: 50px auto;
+    grid-template-columns: 50px auto;
+    grid-template-rows: 50px  300px auto;
 
 }
-header {
+
+
+aside.main-aside {
+  background: $color-secondary-2-1;
+  grid-row: 1/ span 3;
+}
+
+nav {
     background: $color-complement-1;
     ul>li{
         display: inline;
     }
 }
-aside {
-    background: $color-secondary-2-1;
-    grid-row: 1/ span 2;
+
+header.wrapper {
+  background:  $color-secondary-2-2;
+  display: grid;
+  grid-template-columns: 200px auto;
+  aside {
+    background: $color-secondary-2-3;
+  }
+  section.content {
+    background: $color-secondary-2-4;
+    display: grid;
+    div.over-nav {
+      min-height: 10px;
+      width: 100%;
+      background: $color-secondary-1-2;
+    }
+    div.nav {
+      display: grid;
+      grid-template-columns: auto 20px;
+      ul {
+        padding-left: 0;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        li {
+          list-style: none;
+          grid-template-columns: 200px auto;
+        }
+      }
+    }
+  }
 }
 
-section{
 
+
+
+section{
     background: $color-primary-0;
 }
 
 article {
     background: $color-complement-0;
+}
+section.wrapper {
+  display: grid;
+
 }
