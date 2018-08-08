@@ -1,8 +1,12 @@
+
+@import "reset";
+@import "mixins";
 @import "color";
 @import "layout";
 $breakSmall: 400px;
 $breakMedium: 800px;
 $breakLarge: 1300px;
+
 
 aside.main-aside {
     background: $color-secondary-2-1;
@@ -26,8 +30,6 @@ header {
         div.over-nav {
             background: $color-secondary-2-4;
         }
-
-
     }
 }
 

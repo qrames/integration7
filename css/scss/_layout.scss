@@ -1,52 +1,143 @@
 @import "color";
-$breakSmall: 400px;
-$breakMedium: 800px;
-$breakLarge: 1300px;
+$breakOutSmall: 400px;
+$breakOutMedium: 800px;
+$breakOutLarge: 1300px;
 body {
     display: grid;
     grid-template-columns: 50px auto;
     grid-template-rows: 50px  300px auto ;
 
 }
+
+img {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  li {
+    width: 100%;
+    min-height: 20px;
+  }
+}
+
+
 aside.main-aside {
     grid-row: 1/ span 3;
 }
-@media screen and (min-width: $breakMedium){
+
+div.divArticle {
+    @include grid-columns(2);
+    padding: 0.5em;
+    grid-gap: 0.5rem;
+    grid-auto-rows: minmax(100px, auto);
+    article {
+      // border-radius: 15px;
+      padding: 0.5em;
+    }
+    article:nth-child(1) {
+      @include grid-start-span(1,2,1,3);
+    }
+    article:nth-child(2) {
+      @include grid-start-span(1,2,4,1);
+    }
+    article:nth-child(3) {
+      @include grid-start-span(1,1,5,2);
+    }
+    article:nth-child(4) {
+      @include grid-start-span(2,1,5,2);
+    }
+    article:nth-child(5) {
+      @include grid-start-span(1,2,7,1);
+    }
+    article:nth-child(6) {
+      @include grid-start-span(1,2,8,1);
+    }
+}
+
+.divThumb {
+  @include grid-columns(1);
+}
+
+.divThumbAlt {
+  @include grid-columns(2);
+}
+
+section.foot {
+  grid-auto-rows: minmax(200px, auto);
+}
+section.foot-1 {
+  @include grid-columns(1);
+}
+section.foot-2 {
+  @include grid-columns(1);
+}
 
 
+section.foot-3 { //5 elements
+  @include grid-columns(2);
+  padding: 0.5em;
+  grid-gap: 0.5rem;
+  grid-auto-rows: minmax(100px, auto);
+  li:nth-child(1) {
+    @include grid-start-span(1,2,1,3);
+  }
+}
+section.foot-4 { // 7 elements
+  @include grid-columns(2);
+  padding: 0.5em;
+  grid-gap: 0.5rem;
+  grid-auto-rows: minmax(100px, auto);
+}
 
+
+// ===================================tablette===================================
+@media screen and (min-width: $breakOutSmall){
+  .divThumb {
+    @include grid-columns(2);
+  }
+  .divThumbAlt {
+    @include grid-columns(4);
+  }
+  section.foot-1 {
+    @include grid-columns(2);
+  }
+}
+
+// ===================================desktop===================================
+@media screen and (min-width: $breakOutMedium){
+  ul {
+    flex-direction: row;
+  }
 nav {
-    ul>li{
-        display: inline;
+    ul {
+        li{
+          display: inline;
+        }
     }
 }
 
 header {
-  //media :
-  // display: grid;
-  // grid-template-columns: 200px auto;
   aside {
+
   }
 
   section.content {
       display: grid;
-      grid-template-rows: 20px 30px 1fr;
+      grid-template-rows: 30px auto 1fr;
       div.over-nav {
-          // min-height: 10px;
           width: 100%;
       }
       div.nav {
           display: grid;
           grid-template-columns: auto 20px;
           ul {
-              padding-left: 0;
-
-              display: flex;
-              justify-content: space-around;
+            margin: 0;
               li {
-                  width: 100%;
-                  list-style: none;
-                  grid-template-columns: 200px auto;
+
               }
           }
           a {
@@ -56,49 +147,32 @@ header {
   }
 }
 div.divArticle {
-  padding: 0.5em;
-    display: grid;
-    grid-gap: 0.5rem;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    @include grid-columns(4);
     article {
-      // border-radius: 15px;
       padding: 0.5em;
     }
     article:nth-child(1) {
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 3;
+      @include grid-start-span(1,2,1,3);
     }
     article:nth-child(2) {
-      grid-column: 1 / span 2;
-      grid-row: 4 / span 1;
+      @include grid-start-span(1,2,4,1);
     }
     article:nth-child(3) {
-      grid-column: 3 / span 1;
-      grid-row: 1 / span 2;
+      @include grid-start-span(3,1,1,2);
     }
     article:nth-child(4) {
-      grid-column: 4 / span 1;
-      grid-row: 1 / span 2;
+      @include grid-start-span(4,1,1,2);
     }
     article:nth-child(5) {
-      grid-column: 3 / span 2;
-      grid-row: 3 / span 1;
+      @include grid-start-span(3,2,3,1);
     }
     article:nth-child(6) {
-      grid-column: 3 / span 2;
-      grid-row: 4 / span 1;
+      @include grid-start-span(3,2,4,1);
     }
 }
 
 .divThumb {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  a {
-    img {
-      width: 100%;
-    }
-  }
+  @include grid-columns(5);
 }
 
 .sectionAutre, .sectionThumbAlt {
@@ -107,12 +181,10 @@ div.divArticle {
 }
 
 div.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  @include grid-columns(2);
   grid-gap: 1em;
   .divThumbAlt {
-    display: grid;
-    grid-template-columns: repeat( 4, 1fr );
+    @include grid-columns(4);
     img {
       width: 100%;
       height: auto;
@@ -120,21 +192,17 @@ div.wrapper {
   }
 }
 
-section.foot {
-  display: grid;
-  grid-auto-rows: minmax(200px, auto);
-}
 section.foot-1 {
-  grid-template-columns: repeat( 4, 1fr );
+  @include grid-columns(4);
 }
 section.foot-2 {
-  grid-template-columns: repeat( 1, 1fr );
+  @include grid-columns(1);
 }
 section.foot-3 {
-  grid-template-columns: repeat( 5, 1fr );
+  @include grid-columns(5);
 }
 section.foot-4 {
-  grid-template-columns: repeat( 7, 1fr );
+  @include grid-columns(7);
 }
 
 

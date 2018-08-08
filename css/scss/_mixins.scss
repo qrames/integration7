@@ -1,0 +1,9 @@
+@mixin grid-columns($nbrCol) {
+  display: grid;
+  grid-template-columns: repeat($nbrCol, 1fr);
+}
+
+@mixin grid-start-span($xStart, $xSpan, $yStart, $ySpan) {
+  grid-column: $xStart / span $xSpan;
+  grid-row: $yStart / span $ySpan;
+}
