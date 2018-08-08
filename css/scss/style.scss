@@ -1,4 +1,3 @@
-
 @import "reset";
 @import "mixins";
 @import "color";
@@ -6,7 +5,6 @@
 $breakSmall: 400px;
 $breakMedium: 800px;
 $breakLarge: 1300px;
-
 
 aside.main-aside {
     background: $color-secondary-2-1;
@@ -32,27 +30,19 @@ header {
         }
     }
 }
+@for $i from 0 through 4 {
+    li:nth-child(5n + #{$i}) {
+        background: "$color-secondary-2-#{$i}";
+    }
+}
 
-header, nav {
+header,
+nav {
     color: white;
-    *:nth-child(5n) {
-        background: $color-secondary-2-0;
-    }
-
-    *:nth-child(5n+1) {
-        background: $color-secondary-2-1;
-    }
-
-    *:nth-child(5n+2) {
-        background: $color-secondary-2-2;
-    }
-
-    *:nth-child(5n+3) {
-        background: $color-secondary-2-3;
-    }
-
-    *:nth-child(5n+4) {
-        background: $color-secondary-2-4;
+    @for $i from 0 through 4 {
+        *:nth-child(5n + #{$i}) {
+            background: #{'$color-secondary-2-' + $i};
+        }
     }
     a {
         background: none !important;
@@ -60,7 +50,8 @@ header, nav {
     }
 }
 
-section, body {
+body,
+section {
     background: $color-primary-0;
 }
 

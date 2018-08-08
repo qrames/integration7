@@ -1,9 +1,31 @@
 @mixin grid-columns($nbrCol) {
-  display: grid;
-  grid-template-columns: repeat($nbrCol, 1fr);
+    display: grid;
+    grid-template-columns: repeat($nbrCol, 1fr);
 }
+@mixin full-last-li($nbrCol) {
+    @include grid-columns($nbrCol);
 
+    li:last-child:nth-child(odd):nth-child(n+#{$nbrCol+1}) {
+        grid-column: span $nbrCol;
+    }
+}
+@mixin half-lasts-li($nbrCol) {
+    // $nbrCol2 = $nbrCol*2;
+    @include grid-columns(#{$nbrCol*2});
+    li {
+        grid-column: span 2;
+    }
+    li:nth-last-child(2):nth-child(even):nth-child(n+#{$nbrCol+1}) {
+        grid-column: span $nbrCol;
+        grid-row: 1 / span 1;
+    }
+    li:last-child:nth-child(odd):nth-child(n+#{$nbrCol+2}) {
+        grid-column: span $nbrCol;
+        grid-row: 1 / span 1;
+    }
+
+}
 @mixin grid-start-span($xStart, $xSpan, $yStart, $ySpan) {
-  grid-column: $xStart / span $xSpan;
-  grid-row: $yStart / span $ySpan;
+    grid-column: $xStart / span $xSpan;
+    grid-row: $yStart / span $ySpan;
 }

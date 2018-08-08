@@ -2,28 +2,28 @@
 $breakOutSmall: 400px;
 $breakOutMedium: 800px;
 $breakOutLarge: 1300px;
+
 body {
     display: grid;
     grid-template-columns: 50px auto;
-    grid-template-rows: 50px  300px auto ;
-
+    grid-template-rows: minmax(50px, 100px) minmax(300px, 500px) auto;
 }
 
 img {
-  min-width: 100%;
-  max-width: 100%;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 ul {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  li {
-    width: 100%;
-    min-height: 20px;
-  }
-}
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 
+    li {
+        width: 100%;
+        min-height: 20px;
+    }
+}
 
 aside.main-aside {
     grid-row: 1/ span 3;
@@ -34,186 +34,234 @@ div.divArticle {
     padding: 0.5em;
     grid-gap: 0.5rem;
     grid-auto-rows: minmax(100px, auto);
+
     article {
-      // border-radius: 15px;
-      padding: 0.5em;
+        // border-radius: 15px;
+        padding: 0.5em;
     }
+
     article:nth-child(1) {
-      @include grid-start-span(1,2,1,3);
+        @include grid-start-span(1,2,1,3);
     }
+
     article:nth-child(2) {
-      @include grid-start-span(1,2,4,1);
+        @include grid-start-span(1,2,4,1);
     }
+
     article:nth-child(3) {
-      @include grid-start-span(1,1,5,2);
+        @include grid-start-span(1,1,5,2);
     }
+
     article:nth-child(4) {
-      @include grid-start-span(2,1,5,2);
+        @include grid-start-span(2,1,5,2);
     }
+
     article:nth-child(5) {
-      @include grid-start-span(1,2,7,1);
+        @include grid-start-span(1,2,7,1);
     }
+
     article:nth-child(6) {
-      @include grid-start-span(1,2,8,1);
+        @include grid-start-span(1,2,8,1);
     }
 }
 
 .divThumb {
-  @include grid-columns(1);
+    @include grid-columns(1);
 }
 
 .divThumbAlt {
-  @include grid-columns(2);
+    @include grid-columns(2);
 }
 
 section.foot {
-  grid-auto-rows: minmax(200px, auto);
+    grid-auto-rows: minmax(200px, auto);
 }
+
 section.foot-1 {
-  @include grid-columns(1);
+    @include grid-columns(1);
 }
+
 section.foot-2 {
-  @include grid-columns(1);
+    @include grid-columns(1);
 }
 
-
-section.foot-3 { //5 elements
-  @include grid-columns(2);
-  padding: 0.5em;
-  grid-gap: 0.5rem;
-  grid-auto-rows: minmax(100px, auto);
-  li:nth-child(1) {
-    @include grid-start-span(1,2,1,3);
-  }
-}
-section.foot-4 { // 7 elements
-  @include grid-columns(2);
-  padding: 0.5em;
-  grid-gap: 0.5rem;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-
-// ===================================tablette===================================
-@media screen and (min-width: $breakOutSmall){
-  .divThumb {
-    @include grid-columns(2);
-  }
-  .divThumbAlt {
-    @include grid-columns(4);
-  }
-  section.foot-1 {
-    @include grid-columns(2);
-  }
-}
-
-// ===================================desktop===================================
-@media screen and (min-width: $breakOutMedium){
-  ul {
-    flex-direction: row;
-  }
-nav {
+section.foot-3 {
     ul {
-        li{
-          display: inline;
+        padding: 0.5em;
+        grid-gap: 0.5rem;
+        grid-auto-rows: minmax(100px, auto);
+        @include full-last-li(2);
+    }
+    // ul {
+    //     //5 elements
+    //     @include grid-columns(2);
+    //     padding: 0.5em;
+    //     grid-gap: 0.5rem;
+    //     grid-auto-rows: minmax(100px, auto);
+    //     li:last-child:nth-child(odd){
+    //         grid-column: 1 / span 2;
+    //     }
+    // }
+}
+
+section.foot-4 {
+    ul {
+        // 7 elements
+        @include grid-columns(2);
+        padding: 0.5em;
+        grid-gap: 0.5rem;
+        grid-auto-rows: minmax(100px, auto);
+    }
+}
+// ===================================tablette===================================
+@media screen and (min-width: $breakOutSmall) and (max-width: $breakOutMedium) {
+    .divThumb {
+        @include grid-columns(2);
+    }
+
+    .divThumbAlt {
+        @include grid-columns(4);
+    }
+
+    section.foot-1 {
+        @include grid-columns(2);
+    }
+    section.foot-3 {
+        ul{
+            // @include full-last-li(4);
+            text-align: center;
+
+            @include half-lasts-li(3);
+        }
+    }
+    section.foot-4 {
+        ul{
+            @include full-last-li(2);
         }
     }
 }
-
-header {
-  aside {
-
-  }
-
-  section.content {
-      display: grid;
-      grid-template-rows: 30px auto 1fr;
-      div.over-nav {
-          width: 100%;
-      }
-      div.nav {
-          display: grid;
-          grid-template-columns: auto 20px;
-          ul {
-            margin: 0;
-              li {
-
-              }
-          }
-          a {
-              line-height: 2em;
-          }
-      }
-  }
-}
-div.divArticle {
-    @include grid-columns(4);
-    article {
-      padding: 0.5em;
+// ===================================desktop===================================
+@media screen and (min-width: $breakOutMedium) {
+    ul {
+        flex-direction: row;
     }
-    article:nth-child(1) {
-      @include grid-start-span(1,2,1,3);
+
+    nav {
+        ul {
+            li {
+                display: inline;
+            }
+        }
     }
-    article:nth-child(2) {
-      @include grid-start-span(1,2,4,1);
+
+    header {
+        aside {}
+
+        section.content {
+            display: grid;
+            grid-template-rows: 30px auto 1fr;
+
+            div.over-nav {
+                width: 100%;
+            }
+
+            div.nav {
+                display: grid;
+                grid-template-columns: auto 20px;
+
+                ul {
+                    margin: 0;
+
+                    li {}
+                }
+
+                a {
+                    line-height: 2em;
+                }
+            }
+        }
     }
-    article:nth-child(3) {
-      @include grid-start-span(3,1,1,2);
+
+    div.divArticle {
+        @include grid-columns(4);
+
+        article {
+            padding: 0.5em;
+        }
+
+        article:nth-child(1) {
+            @include grid-start-span(1,2,1,3);
+        }
+
+        article:nth-child(2) {
+            @include grid-start-span(1,2,4,1);
+        }
+
+        article:nth-child(3) {
+            @include grid-start-span(3,1,1,2);
+        }
+
+        article:nth-child(4) {
+            @include grid-start-span(4,1,1,2);
+        }
+
+        article:nth-child(5) {
+            @include grid-start-span(3,2,3,1);
+        }
+
+        article:nth-child(6) {
+            @include grid-start-span(3,2,4,1);
+        }
     }
-    article:nth-child(4) {
-      @include grid-start-span(4,1,1,2);
+
+    .divThumb {
+        @include grid-columns(5);
     }
-    article:nth-child(5) {
-      @include grid-start-span(3,2,3,1);
+
+    .sectionAutre,
+    .sectionThumbAlt {
+        display: inline;
+        min-height: 200px;
     }
-    article:nth-child(6) {
-      @include grid-start-span(3,2,4,1);
+
+    div.wrapper {
+        @include grid-columns(2);
+        grid-gap: 1em;
+
+        .divThumbAlt {
+            @include grid-columns(4);
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
-}
 
-.divThumb {
-  @include grid-columns(5);
-}
-
-.sectionAutre, .sectionThumbAlt {
-  display: inline;
-  min-height: 200px;
-}
-
-div.wrapper {
-  @include grid-columns(2);
-  grid-gap: 1em;
-  .divThumbAlt {
-    @include grid-columns(4);
-    img {
-      width: 100%;
-      height: auto;
+    section.foot-1 {
+        @include grid-columns(4);
     }
-  }
-}
 
-section.foot-1 {
-  @include grid-columns(4);
-}
-section.foot-2 {
-  @include grid-columns(1);
-}
-section.foot-3 {
-  @include grid-columns(5);
-}
-section.foot-4 {
-  @include grid-columns(7);
-}
+    section.foot-2 {
+        @include grid-columns(1);
+    }
 
+    section.foot-3 ul {
+        // @include grid-columns(5);
+        @include half-lasts-li(5);
+    }
 
-section.wrapper {
-  display: grid;
+    section.foot-4 ul {
+        @include half-lasts-li(7);
+        // @include grid-columns(7);
+    }
 
-}
-    header{
-      display: grid;
-      grid-template-columns: 200px auto;
-  }
+    section.wrapper {
+        display: grid;
+    }
 
-
+    header {
+        display: grid;
+        grid-template-columns: 200px auto;
+    }
 }
